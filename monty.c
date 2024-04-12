@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		}
 
 		if (nTokens)
-			check_opcodes(tokens[0], lineArgn, &stack);
+			check_opcodes(tokens, lineArgn, &stack);
 	}
 
 	fclose(file);

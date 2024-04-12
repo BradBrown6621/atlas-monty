@@ -1,23 +1,48 @@
 #include "monty.h"
 
-void check_opcodes(char *opcode, unsigned int linenumber, stack_t **head)
+void check_opcodes(char **args, unsigned int line_number, stack_t **head)
 {
+	extern unsigned int linenumber;
 	int i;
+	char *opcode = args[0];
 
-	instruction_t opcodes[] = {
-		{"push", push},
+	instruction_t opcodesNoArgs[] = {
 		{"pall", pall},
 		{NULL, NULL}
 	};
 
+	instruction_t opcodes[] = {
+		{"push", push},
+		{NULL, NULL}
+	};
+
+	for (i = 0; opcodesNoArgs[i].f != NULL; i++)
+	{
+		if (!strcmp(opcode, opcodesNoArgs[i].opcode))
+		{
+			opcodesNoArgs[i].f(head, line_number);
+			return;
+		}
+	}
+	
 	for (i = 0; opcodes[i].f != NULL; i++)
 	{
 		if (!strcmp(opcode, opcodes[i].opcode))
 		{
-			opcodes[i].f(head, linenumber);
+			if (args[1] == NULL)
+			{
+				fprintf(
+						stderr,
+						"L%d: usage: %s integer\n",
+						linenumber,
+						opcode);
+				exit(EXIT_FAILURE);
+			}
+			opcodes[i].f(head, line_number);
 			return;
 		}
 	}
+	
 	if (opcodes[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", linenumber, opcode);

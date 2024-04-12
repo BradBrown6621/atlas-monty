@@ -43,6 +43,6 @@ int tokenize(char ***array, char *buffer, const char *delim);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void whitespace_trimmer(char *src);
-void check_opcodes(char *opcode, unsigned int linenumber, stack_t **head);
+void check_opcodes(char **args, unsigned int linenumber, stack_t **head);
 
 #endif
