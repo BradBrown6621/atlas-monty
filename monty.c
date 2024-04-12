@@ -27,17 +27,20 @@ int main(int argc, char *argv[])
 
 	while (fgets(line, sizeof(line), file))
 	{
+		lineArgn = 0;
 		linenumber++;
 		whitespace_trimmer(line);
 		nTokens = tokenize(&tokens, line, " ");
 
-		if (nTokens > 1)
+		if (nTokens > 1 && tokens[1])
 		{
 			lineArgn = (unsigned int)atoi(tokens[1]);
 		}
 
 		if (nTokens)
+		{
 			check_opcodes(tokens, lineArgn, &stack);
+		}
 	}
 
 	fclose(file);
