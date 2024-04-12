@@ -12,12 +12,6 @@ void push(stack_t **head, unsigned int lineArgn)
 		exit(EXIT_FAILURE);
 	}
 
-	if (!lineArgn)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", linenumber);
-		exit(EXIT_FAILURE);
-	}
-
 	new->n = lineArgn;
 	new->prev = NULL;
 	new->next = *head;

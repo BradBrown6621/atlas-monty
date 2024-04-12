@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
 	char **tokens = NULL;
 	unsigned int nTokens = 0;
-	unsigned int lineArgn;
+	int lineArgn;
 
 	if (argc != 2)
 	{
@@ -27,22 +27,24 @@ int main(int argc, char *argv[])
 
 	while (fgets(line, sizeof(line), file))
 	{
-		lineArgn = 0;
+		lineArgn = -1;
 		linenumber++;
 		whitespace_trimmer(line);
 		nTokens = tokenize(&tokens, line, " ");
 
 		if (nTokens > 1 && tokens[1])
 		{
-			lineArgn = (unsigned int)atoi(tokens[1]);
+			lineArgn = atoi(tokens[1]);
 		}
 
 		if (nTokens)
 		{
 			check_opcodes(tokens, lineArgn, &stack);
 		}
+		free_tokens(&tokens);
 	}
 
+	free_stack(&stack);
 	fclose(file);
 	return (0);
 }
