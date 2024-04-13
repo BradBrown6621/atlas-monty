@@ -9,7 +9,6 @@ void free_tokens(char ***array)
 
 	for (i = 0; (*array)[i]; i++)
 	{
-		printf("token: %s\n", (*array)[i]);
 		free((*array)[i]);
 	}
 	free(*array);
