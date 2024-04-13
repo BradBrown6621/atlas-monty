@@ -29,7 +29,7 @@ void check_opcodes(char **args, int line_number, stack_t **head)
 	{
 		if (!strcmp(opcode, opcodes[i].opcode))
 		{
-			if (args[1] == NULL)
+			if (args[1] == NULL || line_number < 0)
 			{
 				fprintf(
 						stderr,
