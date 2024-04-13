@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 	{
 		lineArgn = -1;
 		linenumber++;
+		tokens = NULL;
 		whitespace_trimmer(line);
 		nTokens = tokenize(&tokens, line, " ");
 
@@ -41,6 +42,7 @@ int main(int argc, char *argv[])
 		{
 			check_opcodes(tokens, lineArgn, &stack);
 		}
+
 		free_tokens(&tokens);
 	}
 
