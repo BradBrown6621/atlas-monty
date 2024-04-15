@@ -10,6 +10,7 @@ void check_opcodes(char **args, int line_number, stack_t **head, int flag)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 
