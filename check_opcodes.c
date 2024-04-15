@@ -7,6 +7,7 @@ void check_opcodes(char **args, int line_number, stack_t **head, int flag)
 	char *opcode = args[0];
 
 	instruction_t opcodesNoArgs[] = {
+		{"add", add},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
