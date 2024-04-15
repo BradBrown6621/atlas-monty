@@ -46,6 +46,7 @@ void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 void whitespace_trimmer(char *src);
 void check_opcodes(char **args, int lineArgn, stack_t **head, int flag);
