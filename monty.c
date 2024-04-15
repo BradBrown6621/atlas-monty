@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 	char **tokens = NULL;
 	unsigned int nTokens = 0;
 	int lineArgn, flag;
+	char *endptr = NULL;
 
 	if (argc != 2)
 	{
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
 	while (fgets(line, sizeof(line), file))
 	{
 		lineArgn = -1;
-		flag = 1;
+		flag = 0;
 		linenumber++;
 		tokens = NULL;
 		whitespace_trimmer(line);
@@ -36,8 +37,12 @@ int main(int argc, char *argv[])
 
 		if (nTokens > 1 && tokens[1])
 		{
-			lineArgn = atoi(tokens[1]);
-			flag = 0;
+			lineArgn = (int)strtol(tokens[1], &endptr, 10);
+
+			if (endptr == tokens[1] || endptr[0] != '\0')
+			{
+				flag = 1;
+			}
 		}
 
 		if (nTokens)
