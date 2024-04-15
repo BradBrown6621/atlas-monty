@@ -2,9 +2,8 @@
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *a = *stack;
-	stack_t *b = (*stack)->next;
-	if (!stack || !*stack ||!(*stack)->next)
+	stack_t *a, *b;
+	if (!stack || !*stack || !(*stack)->next)
 	{
 		fprintf(
 				stderr,
@@ -13,6 +12,8 @@ void swap(stack_t **stack, unsigned int line_number)
 				);
 		exit(EXIT_FAILURE);
 	}
+	a = *stack;
+	b = (*stack)->next;
 
 	if (b->next)
 	{
