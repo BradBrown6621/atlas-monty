@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void check_opcodes(char **args, int line_number, stack_t **head)
+void check_opcodes(char **args, int line_number, stack_t **head, int flag)
 {
 	extern unsigned int linenumber;
 	int i;
@@ -29,7 +29,7 @@ void check_opcodes(char **args, int line_number, stack_t **head)
 	{
 		if (!strcmp(opcode, opcodes[i].opcode))
 		{
-			if (args[1] == NULL || line_number < 0)
+			if (args[1] == NULL || flag)
 			{
 				fprintf(
 						stderr,
