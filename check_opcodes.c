@@ -8,6 +8,7 @@ void check_opcodes(char **args, int line_number, stack_t **head, int flag)
 
 	instruction_t opcodesNoArgs[] = {
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
